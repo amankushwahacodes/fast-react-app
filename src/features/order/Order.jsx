@@ -8,8 +8,6 @@ import {
   formatDate,
 } from "../../utils/helpers";
 
-
-
 function Order() {
   // Everyone can search for all orders, so for privacy reasons we're gonna gonna exclude names or address, these are only for the restaurant staff
   const order = useLoaderData();
@@ -53,10 +51,9 @@ function Order() {
   );
 }
 
-export async function loader({params}){
- 
-  const order = await getOrder(params.orderId)
-  return order
+export async function loader({ params }) {
+  const order = await getOrder(params.orderId);
+  return order;
 }
 
 export default Order;
