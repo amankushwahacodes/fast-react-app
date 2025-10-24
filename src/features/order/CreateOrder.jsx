@@ -32,7 +32,6 @@ function CreateOrder() {
   const priorityPrice = withPriority ? totalCartPrice * 0.2 : 0;
   const totalPrice = totalCartPrice + priorityPrice;
   const navigation = useNavigation();
-  console.log(cart);
   const formErrors = useActionData();
   const dispatch = useDispatch();
   const isSubmitting = navigation.state === "submitting";
@@ -137,14 +136,13 @@ function CreateOrder() {
 export async function action({ request }) {
   const formData = await request.formData();
   const data = Object.fromEntries(formData);
-  console.log(data);
+
 
   const order = {
     ...data,
     cart: JSON.parse(data.cart),
     priority: data.priority === "true",
   };
-  console.log(order);
 
   const errors = {};
   if (!isValidPhone(order.phone))
